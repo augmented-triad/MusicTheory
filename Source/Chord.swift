@@ -96,7 +96,7 @@ public enum ChordFifthType: Int, ChordPart {
   /// Half step down of perfect fifth.
   case diminished
   /// Half step up of perfect fifth.
-  case agumented
+  case augmented
 
   /// Initilize chord part with interval.
   public init?(interval: Interval) {
@@ -105,8 +105,8 @@ public enum ChordFifthType: Int, ChordPart {
       self = .perfect
     case ChordFifthType.diminished.interval:
       self = .diminished
-    case ChordFifthType.agumented.interval:
-      self = .agumented
+    case ChordFifthType.augmented.interval:
+      self = .augmented
     default:
       return nil
     }
@@ -119,7 +119,7 @@ public enum ChordFifthType: Int, ChordPart {
       return .P5
     case .diminished:
       return .d5
-    case .agumented:
+    case .augmented:
       return .A5
     }
   }
@@ -128,7 +128,7 @@ public enum ChordFifthType: Int, ChordPart {
   public var notation: String {
     switch self {
     case .perfect: return ""
-    case .agumented: return "♯5"
+    case .augmented: return "♯5"
     case .diminished: return "♭5"
     }
   }
@@ -137,14 +137,14 @@ public enum ChordFifthType: Int, ChordPart {
   public var description: String {
     switch self {
     case .perfect: return ""
-    case .agumented: return "Agumented"
+    case .augmented: return "augmented"
     case .diminished: return "Diminished"
     }
   }
 
   /// All values of `ChordFifthType`.
   public static var all: [ChordFifthType] {
-    return [.perfect, .diminished, .agumented]
+    return [.perfect, .diminished, .augmented]
   }
 }
 
@@ -588,7 +588,7 @@ public struct ChordType: ChordDescription {
         sixthNotation = sixth == nil ? "" : sixth!.notation
       }
       // Show fifth note after seventh in parenthesis
-      if fifth == .agumented || fifth == .diminished {
+      if fifth == .augmented || fifth == .diminished {
         return "\(third.notation)\(sixthNotation)\(seventhNotation)(\(fifth.notation))\(suspendedNotation)\(extensionNotation)"
       }
     }
@@ -771,8 +771,8 @@ public struct Chord: ChordDescription {
     if type.sixth != nil {
       roman = "\(roman)6"
     }
-    // Check if agumented
-    if type.fifth == .agumented {
+    // Check if augmented
+    if type.fifth == .augmented {
       roman = "\(roman)+"
     }
     // Check if diminished
