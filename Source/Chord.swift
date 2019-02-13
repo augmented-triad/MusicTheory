@@ -137,7 +137,7 @@ public enum ChordFifthType: Int, ChordPart {
   public var description: String {
     switch self {
     case .perfect: return ""
-    case .augmented: return "augmented"
+    case .augmented: return "Augmented"
     case .diminished: return "Diminished"
     }
   }
